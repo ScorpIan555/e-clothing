@@ -19,7 +19,7 @@ class App extends Component {
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       // createUserProfileDocument(user);
-      console.log("user:::", userAuth);
+      console.log("userAuth:::", userAuth);
       // this.setState({ currentUser: user });
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
@@ -32,7 +32,7 @@ class App extends Component {
           });
         });
       } else {
-        setCurrentUser(userAuth); // s/b null
+        setCurrentUser(null); // s/b null
       }
     });
   }
