@@ -5,11 +5,18 @@ import axios from "axios";
 const StripeCheckoutButton = ({ price }) => {
   const priceForStripe = price * 100;
   const publishableKey = "pk_test_LGXzgY8j5yTHBrtlmvfAQIgY";
+  const baseURL_production = "https://corona-ropa.herokuapp.com/";
+  const baseURL_development = "http://localhost:4000";
+  console.log("process.env:::", process.env);
 
   const onToken = token => {
     axios({
       url: "payment",
-      baseURL: "http://localhost:4000/",
+      // baseURL: "http://localhost:4000/",
+      baseURL:
+        process.env.NODE_ENV === "production"
+          ? baseURL_production
+          : baseURL_development,
       method: "post",
       data: {
         amount: priceForStripe,
