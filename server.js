@@ -30,6 +30,7 @@ if (process.env.NODE_ENV === "production") {
 app.listen(port, error => {
   if (error) throw error;
   console.log("Server running on port: " + port);
+  console.log("Server running on localhost:" + port);
 });
 
 app.get("/service-worker.js", (req, res) => {
